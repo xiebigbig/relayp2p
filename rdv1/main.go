@@ -34,7 +34,6 @@ var (
 )
 
 func usage() {
-	fmt.Fprintf(flag.CommandLine.Output(), "usage:\n\trdv [ flags ] serve\n\trdv [ flags ] <dial|accept> ADDR TOKEN:\n\n")
 	flag.PrintDefaults()
 }
 

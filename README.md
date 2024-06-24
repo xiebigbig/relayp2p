@@ -23,8 +23,6 @@ $ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
 ```
 [root@VM-16-5-centos rdvp2p]# ./relayp2p -h
 usage:
-	rdv [ flags ] serve
-	rdv [ flags ] <dial|accept> ADDR TOKEN:
 
   -addr string
     	server: listening addr (default ":8686")
