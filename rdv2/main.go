@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"net/netip"
 	"os"
-	"sync"
+// 	"sync"
 	"os/signal"
 	"time"
 	"io"
