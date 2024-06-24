@@ -162,12 +162,31 @@ func clientCmd(client *rdv.Client, remoteAddr, localAddr, token, method string) 
         	listener, err := net.ListenTCP("tcp4", listenTcpAddr)
         	checkError(err)
         	log.Println("listening on:", listener.Addr())
+        	
+        // 	chTCPConn := make(chan *net.TCPConn, 16)
+        // 	go func() {
+        //     	tickerCheck := time.NewTicker( time.Duration(3)*time.Second)
+        //     	defer tickerCheck.Stop()
+        //     	for {
+        //     		select {
+        //     		case p1 := <-chTCPConn:
+        //     		    go handleLocalTcp(smuxSession, p1, !flagVerbose)
+        //     		case <-tickerCheck.C:
+        //     			if smuxSession.IsClosed(){
+        //     				log.Println("p2p session closed")
+        //     				return 
+        //     			}
+        //     		}
+        //     	}
+        // 	}()
+        	
         	for{
         		p1, err := listener.AcceptTCP()
         		if err != nil {
         			log.Fatalln(err)
         			checkError(err)
         		}
+        // 		chTCPConn <- p1
         		go handleLocalTcp(smuxSession, p1, !flagVerbose)
         	}
     	} else {
