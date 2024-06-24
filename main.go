@@ -97,6 +97,7 @@ func main() {
     	for i, addr := range remoteAddrs { 
     	    go func() {
     	        defer wg.Done()
+    	        slog.Info("client: peer connected", "remoteAddr", addr, "model", "dial", "token", fmt.Sprintf("%s:%d",token,i))
         		err = clientCmd(client, addr, localAddr, fmt.Sprintf("%s:%d",token,i) ,rdv.DIAL)
             	if err != nil {
             		slog.Error("an error occurred", "err", err)
@@ -113,6 +114,7 @@ func main() {
     	for i, addr := range localAddrs {
     	    go func() {
     	        defer wg.Done()
+    	        slog.Info("client: peer connected", "remoteAddr", addr, "model", "accept", "token", fmt.Sprintf("%s:%d",token,i))
         		err = clientCmd(client, remoteAddr, addr, fmt.Sprintf("%s:%d",token,i) ,rdv.ACCEPT)
             	if err != nil {
             		slog.Error("an error occurred", "err", err)
